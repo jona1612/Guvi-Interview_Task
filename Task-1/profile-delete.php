@@ -32,7 +32,7 @@
 	
 		<div class="row col-lg-8 border rounded mx-auto mt-5 p-2 shadow-lg">
 			<div class="col-md-4 text-center">
-				<img src="<?=get_image($row['image'])?>" class="js-image img-fluid rounded" style="width: 180px;height:180px;object-fit: cover;">
+				<img src="<?=get_image($row['image'])?>" class="js-image img-fluid rounded mt-2" style="width: 180px;height:180px;object-fit: cover;">
 
 			</div>
 			<div class="col-md-8">

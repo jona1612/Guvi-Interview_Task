@@ -49,9 +49,9 @@
 		{
 			$info['errors']['password'] = "Passwords dont match";
 		}else
-		if(strlen($_POST['password']) < 8)
+		if(strlen($_POST['password']) < 6)
 		{
-			$info['errors']['password'] = "Password must be at least 8 characters long";
+			$info['errors']['password'] = "Password must be at least 6 characters long";
 		}
 	}
 

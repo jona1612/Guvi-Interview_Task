@@ -30,6 +30,16 @@
 		$info['errors']['email'] = "Email is not valid";
 	}
 
+	// //validate contact
+	// if(empty($_POST['contact']))
+	// {
+	// 	$info['errors']['contact'] = "A Contact is Not required";
+	// }else
+	// if(!preg_match("/^[\p{L}]+$/", $_POST['contact']))
+	// {
+	// 	$info['errors']['lastname'] = "contact have only numbers";
+	// }
+
 	//validate gender
 	$genders = ['Male','Female'];
 	if(empty($_POST['gender']))
@@ -50,9 +60,9 @@
 	{
 		$info['errors']['password'] = "Passwords dont match";
 	}else
-	if(strlen($_POST['password']) < 8)
+	if(strlen($_POST['password']) < 6)
 	{
-		$info['errors']['password'] = "Password must be at least 8 characters long";
+		$info['errors']['password'] = "Password must be at least 6 characters long";
 	}
 
 

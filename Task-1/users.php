@@ -24,14 +24,14 @@
 	<div class="row">
 	<?php if(!empty($rows)):?>
 		<?php foreach($rows as $row):?>
-			<div class="col-2 border rounded mx-auto mt-5 p-2 shadow-lg" style="width:200px;">
+			<div class="col-2 border rounded mx-auto mt-5 p-2 shadow-lg " style="width:200px;">
 				<a href="index.php?id=<?=$row['id']?>">
 					<div class="col-md-12 text-center">
 						<img src="<?=get_image($row['image'])?>" class="img-fluid rounded" style="width: 180px;height:180px;object-fit: cover;">
 						<div>
 
-						 	<div><?=esc($row['email'])?></div>
-						 	<div><?=esc($row['firstname'])?> <?=esc($row['lastname'])?></div>
+							<div class="badge bg-info fs-6 fw-bold font-monospace text-wrap p-2 mt-2 mb-1"><span style="text-transform:capitalize"><?=esc($row['firstname'])?> <?=esc($row['lastname'])?></span></div>
+							<div class="font-monospace"><?=esc($row['email'])?></div>
 						</div>
 					</div>
 				</a>

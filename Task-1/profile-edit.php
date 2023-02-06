@@ -32,7 +32,7 @@
 	
 		<div class="row col-lg-8 border rounded mx-auto mt-5 p-2 shadow-lg">
 			<div class="col-md-4 text-center">
-				<img src="<?=get_image($row['image'])?>" class="js-image img-fluid rounded" style="width: 180px;height:180px;object-fit: cover;">
+				<img src="<?=get_image($row['image'])?>" class="js-image img-fluid rounded mt-2 mb-2" style="width: 180px;height:180px;object-fit: cover;">
 				<div>
 					<div class="mb-3">
 					  <label for="formFile" class="form-label">Click below to select an image</label>
@@ -46,27 +46,35 @@
 				<div class="h2">Edit Profile</div>
 
 				<form method="post" onsubmit="myaction.collect_data(event, 'profile-edit')">
-					<table class="table table-striped">
+					<table class="table table-striped table-hover">
 						<tr><th colspan="2">User Details:</th></tr>
-						<tr><th><i class="bi bi-envelope"></i> Email</th>
-							<td>
-								<input value="<?=$row['email']?>" type="text" class="form-control" name="email" placeholder="Email">
-								<div><small class="js-error js-error-email text-danger"></small></div>
-							</td>
-						</tr>
-						<tr><th><i class="bi bi-person-circle"></i> First name</th>
+						
+						<tr>
+							<th><i class="bi bi-person-circle"></i> First name</th>
 							<td>
 								<input value="<?=$row['firstname']?>" style="text-transform:capitalize" type="text" class="form-control" name="firstname" placeholder="First name">
 								<div><small class="js-error js-error-firstname text-danger"></small></div>
 							</td>
 						</tr>
-						<tr><th><i class="bi bi-person-square"></i> Last name</th>
+
+						<tr>
+							<th><i class="bi bi-person-square"></i> Last name</th>
 							<td>
 								<input value="<?=$row['lastname']?>" style="text-transform:capitalize" type="text" class="form-control" name="lastname" placeholder="Last name">
 								<div><small class="js-error js-error-lastname text-danger"></small></div>
 							</td>
 						</tr>
-						<tr><th><i class="bi bi-gender-ambiguous"></i> Gender</th>
+
+						<tr>
+							<th><i class="bi bi-envelope"></i> Email</th>
+							<td>
+								<input value="<?=$row['email']?>" type="text" class="form-control" name="email" placeholder="Email">
+								<div><small class="js-error js-error-email text-danger"></small></div>
+							</td>
+						</tr>
+
+						<tr>
+							<th><i class="bi bi-gender-ambiguous"></i> Gender</th>
 							<td>
 								<select name="gender" class="form-select form-select mb-3" aria-label=".form-select-lg example">
 								  <option value="">--Select Gender--</option>
@@ -77,14 +85,33 @@
 								<div><small class="js-error js-error-gender text-danger"></small></div>
 							</td>
 						</tr>
+
+						<!-- <tr>
+							<th><i class="bi bi-calendar-date"></i> DOB</th>
+							<td>
+								<input value="<?=$row['lastname']?>" style="text-transform:capitalize" type="text" class="form-control" name="lastname" placeholder="Last name">
+								<div><small class="js-error js-error-lastname text-danger"></small></div>
+							</td>
+						</tr>
 						
-						<tr><th><i class="bi bi-key"></i> Password</th>
+						<tr>
+							<th><i class="bi bi-person-lines-fill"></i> Contact</th>
+							<td>
+								<input value="<?=$row['lastname']?>" style="text-transform:capitalize" type="text" class="form-control" name="lastname" placeholder="Last name">
+								<div><small class="js-error js-error-lastname text-danger"></small></div>
+							</td>
+						</tr> -->
+						
+						<tr>
+							<th><i class="bi bi-key"></i> Password</th>
 							<td>
 								<input type="password" class="form-control" name="password" placeholder="Password (leave empty to keep old password)">
 								<div><small class="js-error js-error-password text-danger"></small></div>
 							</td>
 						</tr>
-						<tr><th><i class="bi bi-key-fill"></i> Retype Password</th>
+
+						<tr>
+							<th><i class="bi bi-key-fill"></i> Retype Password</th>
 							<td>
 								<input type="password" class="form-control" name="retype_password" placeholder="Retype Password">
 							</td>
@@ -117,107 +144,7 @@
 		</a>
 	<?php endif;?>
 
+	<script src="./js/profile-edit.js"></script>
+
 </body>
 </html>
-
-<script>
-
-	var image_added = false;
-
-	function display_image(file)
-	{
-		var img = document.querySelector(".js-image");
-		img.src = URL.createObjectURL(file);
-
-		image_added = true;
-	}
- 
-	var myaction  = 
-	{
-		collect_data: function(e, data_type)
-		{
-			e.preventDefault();
-			e.stopPropagation();
-
-			var inputs = document.querySelectorAll("form input, form select");
-			let myform = new FormData();
-			myform.append('data_type',data_type);
-
-			for (var i = 0; i < inputs.length; i++) {
-
-				myform.append(inputs[i].name, inputs[i].value);
-			}
-
-			if(image_added)
-			{
-				myform.append('image',document.querySelector('.js-image-input').files[0]);
-			}
-
-			myaction.send_data(myform);
-		},
-
-		send_data: function (form)
-		{
-
-			var ajax = new XMLHttpRequest();
-
-			document.querySelector(".progress").classList.remove("d-none");
-
-			//reset the prog bar
-			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "Working... 0%";
-
-			ajax.addEventListener('readystatechange', function(){
-
-				if(ajax.readyState == 4)
-				{
-					if(ajax.status == 200)
-					{
-						//all good
-						myaction.handle_result(ajax.responseText);
-					}else{
-						console.log(ajax);
-						alert("An error occurred");
-					}
-				}
-			});
-
-			ajax.upload.addEventListener('progress', function(e){
-
-				let percent = Math.round((e.loaded / e.total) * 100);
-				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
-			});
-
-			ajax.open('post','ajax.php', true);
-			ajax.send(form);
-		},
-
-		handle_result: function (result)
-		{
-			console.log(result);
-			var obj = JSON.parse(result);
-			if(obj.success)
-			{
-				alert("Profile edited successfully");
-				window.location.reload();
-			}else{
-
-				//show errors
-				let error_inputs = document.querySelectorAll(".js-error");
-
-				//empty all errors
-				for (var i = 0; i < error_inputs.length; i++) {
-					error_inputs[i].innerHTML = "";
-				}
-
-				//display errors
-				for(key in obj.errors)
-				{
-					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
-				}
-			}
-		}
-	};
-
-</script>
