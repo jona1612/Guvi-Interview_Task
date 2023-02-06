@@ -56,13 +56,13 @@
 						</tr>
 						<tr><th><i class="bi bi-person-circle"></i> First name</th>
 							<td>
-								<input value="<?=$row['firstname']?>" type="text" class="form-control" name="firstname" placeholder="First name">
+								<input value="<?=$row['firstname']?>" style="text-transform:capitalize" type="text" class="form-control" name="firstname" placeholder="First name">
 								<div><small class="js-error js-error-firstname text-danger"></small></div>
 							</td>
 						</tr>
 						<tr><th><i class="bi bi-person-square"></i> Last name</th>
 							<td>
-								<input value="<?=$row['lastname']?>" type="text" class="form-control" name="lastname" placeholder="Last name">
+								<input value="<?=$row['lastname']?>" style="text-transform:capitalize" type="text" class="form-control" name="lastname" placeholder="Last name">
 								<div><small class="js-error js-error-lastname text-danger"></small></div>
 							</td>
 						</tr>

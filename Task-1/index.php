@@ -58,11 +58,11 @@
 			</div>
 			<div class="col-md-8">
 				<div class="h2">User Profile</div>
-				<table class="table table-striped">
+				<table class="table table-striped  table-hover">
 					<tr><th colspan="2">User Details:</th></tr>
+					<tr><th><i class="bi bi-person-circle"></i> First name</th><td><span style="text-transform:capitalize"><?=esc($row['firstname'])?></span></td></tr>
+					<tr><th><i class="bi bi-person-square"></i> Last name</th><td><span style="text-transform:capitalize"><?=esc($row['lastname'])?></span></td></tr>
 					<tr><th><i class="bi bi-envelope"></i> Email</th><td><?=esc($row['email'])?></td></tr>
-					<tr><th><i class="bi bi-person-circle"></i> First name</th><td><?=esc($row['firstname'])?></td></tr>
-					<tr><th><i class="bi bi-person-square"></i> Last name</th><td><?=esc($row['lastname'])?></td></tr>
 					<tr><th><i class="bi bi-gender-ambiguous"></i> Gender</th><td><?=esc($row['gender'])?></td></tr>
 				</table>
 			</div>
