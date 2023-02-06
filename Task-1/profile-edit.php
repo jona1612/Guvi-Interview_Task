@@ -32,7 +32,7 @@
 	
 		<div class="row col-lg-8 border rounded mx-auto mt-5 p-2 shadow-lg">
 			<div class="col-md-4 text-center">
-				<img src="<?=get_image($row['image'])?>" class="js-image img-fluid rounded mt-2 mb-2" style="width: 180px;height:180px;object-fit: cover;">
+				<img src="<?=get_image($row['image'])?>" class="js-image img-fluid rounded mt-1 mb-2" style="width: 180px;height:180px;object-fit: cover;">
 				<div>
 					<div class="mb-3">
 					  <label for="formFile" class="form-label">Click below to select an image</label>
@@ -85,22 +85,6 @@
 								<div><small class="js-error js-error-gender text-danger"></small></div>
 							</td>
 						</tr>
-
-						<!-- <tr>
-							<th><i class="bi bi-calendar-date"></i> DOB</th>
-							<td>
-								<input value="<?=$row['lastname']?>" style="text-transform:capitalize" type="text" class="form-control" name="lastname" placeholder="Last name">
-								<div><small class="js-error js-error-lastname text-danger"></small></div>
-							</td>
-						</tr>
-						
-						<tr>
-							<th><i class="bi bi-person-lines-fill"></i> Contact</th>
-							<td>
-								<input value="<?=$row['lastname']?>" style="text-transform:capitalize" type="text" class="form-control" name="lastname" placeholder="Last name">
-								<div><small class="js-error js-error-lastname text-danger"></small></div>
-							</td>
-						</tr> -->
 						
 						<tr>
 							<th><i class="bi bi-key"></i> Password</th>

@@ -88,20 +88,6 @@
 						</td>
 					</tr>
 
-					<!-- <tr>
-						<th><i class="bi bi-calendar-date"></i> DOB</th>
-						<td>
-							<?=esc($row['dob'])?>
-						</td>
-					</tr>
-
-					<tr>
-						<th><i class="bi bi-person-lines-fill"></i> Contact</th>
-						<td>
-							<?=esc($row['contact'])?>
-						</td>
-					</tr> -->
-
 				</table>
 			</div>
 		</div>
